@@ -1,0 +1,25 @@
+{
+    "env": {
+      "es6": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:flowtype/recommended"
+    ],
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "plugins": [
+      "flowtype"
+    ],
+    "globals": {
+      "document": true,
+      "module": true,
+      "describe": true,
+      "it": true,
+      "expect": true,
+      "require": true,
+      "__dirname": true
+    }
+}
