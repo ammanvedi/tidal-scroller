@@ -20,6 +20,8 @@
       "it": true,
       "expect": true,
       "require": true,
-      "__dirname": true
+      "__dirname": true,
+      "jest": true,
+      "beforeEach": true
     }
 }
