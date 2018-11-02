@@ -7,12 +7,13 @@
       "plugin:react/recommended",
       "plugin:flowtype/recommended"
     ],
-    "parserOptions": {
-        "sourceType": "module"
-    },
     "plugins": [
       "flowtype"
     ],
+    "rules": {
+        "react/prop-types": [ false ],
+        "no-console": ["error", { allow: ["warn", "error"] }]
+    },
     "globals": {
       "document": true,
       "module": true,
@@ -22,6 +23,16 @@
       "require": true,
       "__dirname": true,
       "jest": true,
-      "beforeEach": true
+      "beforeEach": true,
+      "fetch": true,
+      "console": true
+    },
+    "settings": {
+        "react": {
+          "createClass": "createReactClass",
+          "pragma": "React",
+          "version": "16.0",
+          "flowVersion": "0.83"
+        }
     }
 }
