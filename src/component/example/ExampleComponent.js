@@ -4,10 +4,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Example.scss';
 import type { State, DispatchPropsMapping, DispatchFunction } from '../../store/Type';
-import { updateExampleAction } from '../../store/Action/ExampleActions';
+import { tidalDataFetch } from '../../store/Action/TidalDataAction';
+import type { TidalFavoritesData } from '../../store/Type';
 
 type ExampleComponentProps = {
-    example: string
+    tidalData?: TidalFavoritesData,
+    fetchData?: () => void
 }
 
 
@@ -17,22 +19,29 @@ export class ExampleComponent extends React.Component<ExampleComponentProps> {
         super(props);
     }
 
+    componentDidMount() {
+        if ( !this.props.fetchData ) {
+            return;
+        }
+        this.props.fetchData();
+    }
+
     render() {
         return (
-            <div className={ styles.example }>Hello { this.props.example }</div>
+            <div className={ styles.example }>Hello { this.props.tidalData ? this.props.tidalData.lastUpdated : '' }</div>
         )
     }
 }
 
 const mapStateToProps = ( state: State ): ExampleComponentProps => {
     return {
-        example: state.example
+        tidalData: state.tidalData
     }
 }
 
 const mapDispatchToProps = ( dispatch: DispatchFunction ): DispatchPropsMapping => {
     return {
-        updateExample: ( text: string ) => { dispatch( updateExampleAction( text ) ) }
+        fetchData: () => { dispatch( tidalDataFetch() ) }
     }
 }
 

@@ -1,9 +1,18 @@
 //@flow
 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { tidalDataReducer } from './Reducer/TidalDataReducer';
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './Saga/RootSaga';
+import type createReduxSagaMiddleware from 'redux-saga';
 
-import { exampleReducer } from './Reducer/ExampleReducer';
+const sagaMiddleware: createReduxSagaMiddleware = createSagaMiddleware();
 
-export default createStore( combineReducers( {
-    example: exampleReducer
-} ) );
+export default createStore(
+    combineReducers( {
+        tidalData: tidalDataReducer
+    } ),
+    applyMiddleware( sagaMiddleware )
+);
+
+sagaMiddleware.run( rootSaga );
