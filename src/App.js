@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ExampleComponent from './component/example/ExampleComponent';
