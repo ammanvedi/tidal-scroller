@@ -16,6 +16,8 @@ export type State = {
     tidalData: TidalFavoritesData,
 };
 
+export type ActionGenerator<T> = ( T ) => Action;
+
 export type DispatchFunction = ( action: Action ) => void;
 
 export type DispatchPropsFunction = ( d: any ) => void;
