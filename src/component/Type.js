@@ -1,0 +1,35 @@
+//@flow
+
+export type ItemModel = {
+    id: string,
+    title: string,
+    imageUrl: string
+}
+
+export type ItemModelList = Array<ItemModel>;
+
+export type ItemComponentProps = {
+    model: ItemModel
+}
+
+export type GenericObject = {};
+
+export type TransFormFunction = ( listing: Array<GenericObject> ) => ItemModelList;
+
+export type ArtistModel = {
+    id: string,
+    name: string
+}
+
+export type SongModel = {
+    id: string,
+    title: string,
+    artists: Array<ArtistModel>,
+    url: string
+}
+
+export type AlbumModel = ItemModel & {
+    songs: Array<SongModel>,
+    artists: Array<ArtistModel>,
+    url: string
+}
