@@ -6,7 +6,7 @@ export type ItemModel = {
     imageUrl: string
 }
 
-export type ItemModelList = Array<ItemModel>;
+export type ItemModelList = Array<$Subtype<ItemModel>>;
 
 export type ItemComponentProps = {
     model: ItemModel
@@ -14,7 +14,7 @@ export type ItemComponentProps = {
 
 export type GenericObject = {};
 
-export type TransFormFunction = ( listing: Array<GenericObject> ) => ItemModelList;
+export type TransFormFunction = ( listing: * ) => ItemModelList;
 
 export type ArtistModel = {
     id: string,
@@ -33,3 +33,5 @@ export type AlbumModel = ItemModel & {
     artists: Array<ArtistModel>,
     url: string
 }
+
+export type AlbumList = Array<AlbumModel>;
