@@ -24,8 +24,10 @@
       "__dirname": true,
       "jest": true,
       "beforeEach": true,
+      "beforeAll": true,
       "fetch": true,
-      "console": true
+      "console": true,
+      "global": true
     },
     "settings": {
         "react": {
