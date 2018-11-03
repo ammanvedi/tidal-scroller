@@ -49,4 +49,4 @@ export const createSliderComponent = function(
 
     return connect( mapStateToProps, mapDispatchToProps )( SliderComponent );
 
-}
+};
