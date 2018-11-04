@@ -25,10 +25,26 @@ describe( 'Album Cover - Presentation', () => {
         url: 'https://www.google.com'
     }
 
-    it( 'Renders the component correctly', () => {
-        const component = shallow( <AlbumCover className="myClass" album={ album } /> );
+    let component, enter, leave;
 
+    beforeEach( () => {
+        enter = jest.fn();
+        leave = jest.fn();
+        component = shallow( <AlbumCover className="myClass" album={ album } onMouseEnter={ enter } onMouseLeave={ leave } /> );
+    } )
+
+    it( 'Renders the component correctly', () => {
         expect( component.exists( '.album-cover' ) ).toBe( true );
         expect( component.find( '.album-cover__artists' ).first().children().length ).toBe( 2 );
+    } );
+
+    it( 'Fires mouse enter callback', () => {
+        component.simulate( 'mouseEnter' );
+        expect( enter.mock.calls.length ).toBe( 1 );
     } )
-} )
+
+    it( 'Fires mouse leave callback', () => {
+        component.simulate( 'mouseLeave' );
+        expect( leave.mock.calls.length ).toBe( 1 );
+    } );
+} );
