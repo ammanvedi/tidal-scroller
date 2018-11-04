@@ -9,7 +9,7 @@ export type ItemModel = {
 export type ItemModelList = Array<$Subtype<ItemModel>>;
 
 export type ItemComponentProps = {
-    model: ItemModel
+    model: $Subtype<ItemModel>
 }
 
 export type GenericObject = {};
