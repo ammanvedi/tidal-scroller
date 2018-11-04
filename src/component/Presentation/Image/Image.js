@@ -15,6 +15,6 @@ export const Image = ( props: ImageProps ) => {
              src={ props.url }
              onLoad={ props.onLoad }
              onError={ props.onError }
-             className={ props.className } />
+             className={ `image ${ props.className }` } />
     )
 }
