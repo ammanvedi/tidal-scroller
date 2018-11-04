@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import type { State, ActionGenerator, DispatchFunction } from '../../../Store/Type';
 import type { ItemModel, ItemComponentProps, TransFormFunction } from '../../Type';
 
+
 export type SliderProps = {
     itemList?: Array<ItemModel>,
     fetchData?: () => void
@@ -14,7 +15,7 @@ export const createSliderComponent = function(
     stateProperty: string,
     fetchAction: ActionGenerator<void>,
     transformFunction: TransFormFunction,
-    ItemComponent: Class<React.Component<ItemComponentProps, void>> ) {
+    ItemComponent: Class<React.Component<ItemComponentProps, *>> ) {
 
     class SliderComponent extends React.Component<SliderProps> {
 
@@ -30,9 +31,7 @@ export const createSliderComponent = function(
         render() {
             return (
                 <ul>
-                    { ( this.props.itemList || [] ).map( item => {
-                            <ItemComponent key={item.id} model={item} />
-                    } ) }
+                    { ( this.props.itemList || [] ).map( item => <ItemComponent key={item.id} model={item} /> ) }
                 </ul>
             )
         }
