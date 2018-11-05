@@ -1,0 +1,9 @@
+.slider {
+
+    &__list {
+        white-space: nowrap;
+        margin: 0;
+        padding: 0;
+        transition: .3s ease-out transform;
+    }
+}
