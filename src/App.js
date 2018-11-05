@@ -17,5 +17,5 @@ class App extends React.Component {
 
 ReactDOM.render(
     <App />,
-    document.getElementById('example')
+    document.getElementById('tidal-slider')
   );
