@@ -2,6 +2,7 @@
 
 import React from 'react';
 import type { SongModel } from '../../Type';
+import styles from './AlbumSongList.scss';
 
 export type AlbumSongListProps = {
     songs: Array<SongModel>,
@@ -10,7 +11,7 @@ export type AlbumSongListProps = {
 
 export const AlbumSongList = ( props: AlbumSongListProps ) => {
     return (
-        <ul className={ `album-song-list ${ props.className }` } >
+        <ul className={ `${ styles[ 'album-song-list' ] } ${ props.className }` } >
             {
                 props.songs.map( song => {
                     return (
