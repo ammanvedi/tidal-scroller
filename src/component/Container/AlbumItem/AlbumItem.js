@@ -4,9 +4,11 @@ import React from 'react';
 import type { AlbumModel } from '../../Type';
 import { AlbumCover } from '../../Presentation/AlbumCover/AlbumCover';
 import { AlbumSongList } from '../../Presentation/AlbumSongList/AlbumSongList';
+import styles from './AlbumItem.scss';
 
 export type AlbumComponentProps = {
-    model: AlbumModel
+    model: AlbumModel,
+    setRef: ( el: HTMLElement | null ) => void
 }
 
 export type AlbumComponentState = {
@@ -34,7 +36,7 @@ export class AlbumItem extends React.Component<AlbumComponentProps, AlbumCompone
     render() {
 
         return (
-            <div>
+            <div className={ styles[ 'album-item' ] } ref={ this.props.setRef } >
                 <AlbumCover className=""
                             album={ this.props.model }
                             onMouseEnter={ () => this.mouseEnteredAlbumCover() }
