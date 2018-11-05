@@ -32,8 +32,8 @@ describe( 'Album Item - Container', () => {
     } );
 
     it( 'Renders component correctly', () => {
-        expect( component.exists( AlbumCover ) ).toBe( true );
-        expect( component.exists( AlbumSongList ) ).toBe( true );
+        expect( component.find( AlbumCover ).length ).toBe( 1 );
+        expect( component.find( AlbumSongList ).length ).toBe( 1 );
     } );
 
 } );
