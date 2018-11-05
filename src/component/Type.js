@@ -9,7 +9,8 @@ export type ItemModel = {
 export type ItemModelList = Array<$Subtype<ItemModel>>;
 
 export type ItemComponentProps = {
-    model: $Subtype<ItemModel>
+    model: $Subtype<ItemModel>,
+    setRef: ( item: HTMLElement | null ) => void
 }
 
 export type GenericObject = {};
