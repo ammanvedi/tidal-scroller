@@ -27,7 +27,10 @@
       "beforeAll": true,
       "fetch": true,
       "console": true,
-      "global": true
+      "global": true,
+      "setTimeout": true,
+      "clearTimeout": true,
+      "window": true
     },
     "settings": {
         "react": {
