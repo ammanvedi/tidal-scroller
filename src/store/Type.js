@@ -55,6 +55,7 @@ export type TidalAlbum = {
 export type TidalArtists = Array<TidalArtist>;
 
 export type TidalFavoriteItem = {
+    created: string,
     id: number,
     title: string,
     duration: number,
