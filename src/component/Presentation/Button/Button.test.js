@@ -10,10 +10,6 @@ describe( 'Button - Presentaion', () => {
     beforeEach( () => {
         callback = jest.fn();
         container = shallow( <Button text="myText" callback={ callback } /> );
-    } )
-
-    it( 'Renders Correctly', () => {
-        expect( container.find( 'button' ).text() ).toBe( 'myText' );
     } );
 
     it( 'Invokes callback on click', () => {

@@ -1,14 +1,18 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 
 export type ButtonProps = {
-    text: string,
-    callback: () => void
+    callback: () => void,
+    disabled: boolean,
+    className: string,
+    children: React.Node
 }
 
 export const Button = ( props: ButtonProps ) => {
     return (
-        <button onClick={ props.callback } type="button">{ props.text }</button>
+        <button className={ props.className } disabled={props.disabled} onClick={ props.callback } type="button">
+            { props.children }
+        </button>
     )
 }
