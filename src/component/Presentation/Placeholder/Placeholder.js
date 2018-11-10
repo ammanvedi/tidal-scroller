@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import styles from './Placeholder.scss';
 
 export type PlaceHolderProps = {
     className: string
@@ -8,7 +9,7 @@ export type PlaceHolderProps = {
 
 export const Placeholder = ( props: PlaceHolderProps ) => {
     return (
-        <div className={`placeholder ${ props.className }`}>
+        <div className={`${ styles.placeholder } ${ styles[ props.className ] }`}>
             <span className="placeholder__icon"></span>
         </div>
     )
