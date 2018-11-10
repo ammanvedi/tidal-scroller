@@ -6,6 +6,8 @@ import type { State, ActionGenerator, DispatchFunction } from '../../../Store/Ty
 import type { ItemModel, ItemComponentProps, TransFormFunction } from '../../Type';
 import { Button } from '../../Presentation/Button/Button';
 import { debounceFunction } from '../../../util/Debounce';
+import Play from '../../../svg/play.svg';
+import SVGInline from "react-svg-inline"
 
 import styles from './Slider.scss';
 
@@ -42,6 +44,11 @@ export const createSliderComponent = function(
             }
         }
 
+        getFullElWidth( element: HTMLElement ) {
+            const style = getComputedStyle( element );
+            return element.getBoundingClientRect().width + parseInt( style.marginLeft ) + parseInt( style.marginRight );
+        }
+
         evaluatePages() {
 
             if ( !this.container ) {
@@ -53,7 +60,7 @@ export const createSliderComponent = function(
             const containerWidth: number = this.container.getBoundingClientRect().width;
             let runningTotal: number = 0;
             this.elements.forEach( ( element: HTMLElement ) => {
-                const elWidth: number = element.getBoundingClientRect().width;
+                const elWidth: number = this.getFullElWidth( element );
                 if ( ( runningTotal + elWidth ) >= containerWidth ) {
                     // This is the start of the next page
                     this.pages.push( element.offsetLeft );
@@ -84,8 +91,6 @@ export const createSliderComponent = function(
                 this.evaluatePages();
                 this.setState( ( state: SliderState ) => ( { ...state, initialised: true } ) )
             }
-
-            console.warn( this.elements, this.pages );
         }
 
         onNextClicked() {
@@ -111,14 +116,26 @@ export const createSliderComponent = function(
         }
 
         render() {
-            console.warn( this.state );
             return (
-                <div className={ styles.slider } ref={ ( element: HTMLElement | null ) => { this.container = element  } } >
-                    <ul className={ styles.slider__list } style={{ transform: `translateX( -${ this.state.sliderPosition }px )` }} >
-                        { ( this.props.itemList || [] ).map( ( item: ItemModel, ix: number ) => <ItemComponent setRef={ ( element: HTMLElement | null ) => this.registerElement( ix, element ) } key={item.id} model={item} /> ) }
-                    </ul>
-                    <Button text="Next" callback={ () => this.onNextClicked() } />
-                    <Button text="Previous" callback={ () => this.onPreviousClicked() } />
+                <div className={ styles.slider } >
+                    <div className={ styles.slider__wrapper }>
+                        <ul className={ styles.slider__list }
+                            style={{ transform: `translateX( -${ this.state.sliderPosition }px )` }}
+                            ref={ ( element: HTMLElement | null ) => { this.container = element  } } >
+                            { ( this.props.itemList || [] ).map( ( item: ItemModel, ix: number ) => <ItemComponent setRef={ ( element: HTMLElement | null ) => this.registerElement( ix, element ) } key={item.id} model={item} /> ) }
+                        </ul>
+                        <Button className={ `${ styles.slider__button } ${ styles[ 'slider__button--next' ] }` }
+                                disabled={ this.state.currentPageIndex === ( this.pages.length - 1 ) }
+                                text="Next" callback={ () => this.onNextClicked() } >
+                                <SVGInline svg={ Play } />
+                        </Button>
+                        <Button className={ `${ styles.slider__button } ${ styles[ 'slider__button--previous' ] }` }
+                                disabled={ this.state.currentPageIndex === 0 }
+                                text="Previous"
+                                callback={ () => this.onPreviousClicked() }>
+                                <SVGInline svg={ Play } />
+                        </Button>
+                    </div>
                 </div>
             )
         }
