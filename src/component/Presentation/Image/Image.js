@@ -1,5 +1,6 @@
 //@flow
 import React from 'react';
+import styles from './Image.scss';
 
 export type ImageProps = {
     url: string,
@@ -15,6 +16,6 @@ export const Image = ( props: ImageProps ) => {
              src={ props.url }
              onLoad={ props.onLoad }
              onError={ props.onError }
-             className={ `image ${ props.className }` } />
+             className={ `${ styles.image } ${ styles[ props.className ] }` } />
     )
 }
