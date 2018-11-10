@@ -3,6 +3,8 @@
 import React from 'react';
 import { Image } from '../../Presentation/Image/Image';
 import { Placeholder } from '../../Presentation/Placeholder/Placeholder';
+import { LazyComponent } from '../LazyComponent/LazyComponent';
+import styles from './LazyImage.scss';
 
 export type LazyImageProps = {
     url: string,
@@ -36,13 +38,15 @@ export class LazyImage extends React.Component<LazyImageProps, LazyImageState> {
 
     render() {
         return(
-            <div>
-                <Placeholder className={ this.state.imageLoaded ? 'placeholder--hidden': 'placeholder--visible' } />
-                <Image  url={this.props.url}
-                        alt={ this.props.alt }
-                        onLoad={ () => this.onLoad() }
-                        onError={ () => this.onError() }
-                        className={ this.state.imageLoaded ? 'image--visible' : 'image--hidden' } />
+            <div className={ styles.lazy_image } >
+                <LazyComponent className={ styles.lazy_image__wrapper } >
+                    <Placeholder className={ this.state.imageLoaded ? 'placeholder--hidden': 'placeholder--visible' } />
+                    <Image  url={this.props.url}
+                            alt={ this.props.alt }
+                            onLoad={ () => this.onLoad() }
+                            onError={ () => this.onError() }
+                            className={ this.state.imageLoaded ? 'image--visible' : 'image--hidden' } />
+                </LazyComponent>
             </div>
         )
     }
