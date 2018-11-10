@@ -1,6 +1,10 @@
 .album-item {
     display: inline-block;
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     overflow: hidden;
+    margin: 0 10px;
+    border-radius: 11px;
+    box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.5);
+    background-color: #2c3e50;
 }

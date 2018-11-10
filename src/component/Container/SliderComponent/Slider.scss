@@ -1,9 +1,119 @@
+@import '../../../styles/Font.scss';
+@import '../../../styles/Variables.scss';
+
 .slider {
+    padding: 40px 0;
+    margin: 10px 0;
+    overflow: hidden;
+    position: relative;
+    @include font-bold;
+    background-color: rgba( $slider-background, .8 );
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -1px;
+        bottom: 0;
+        left: auto;
+        width: calc( ( 100vw - #{ $slider-max-width } ) / 2 );
+        background: linear-gradient(to left, rgba( $slider-background, .9), rgba( $slider-background, 0));
+        z-index: $level-four;
+    }
+
+    &__wrapper {
+        max-width: $slider-max-width;
+        padding: 0 $slider-button-size;
+        margin: 0 auto;
+        position: relative;
+    }
+
 
     &__list {
         white-space: nowrap;
         margin: 0;
         padding: 0;
-        transition: .3s ease-out transform;
+        transition: .5s ease-in-out transform;
+        z-index: 20;
+        position: relative;
+
+    }
+
+    &__button {
+        position: absolute;
+        appearance: none;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 100%;
+        width: $slider-button-size;
+        height: $slider-button-size;
+        outline: none;
+        border: none;
+        top: 50%;
+        z-index: $level-three;
+        transform: translateY(-50%);
+        transition: .3s ease-out background, .3s ease-out opacity;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba( 0, 0, 0, .8 );
+        }
+
+        &[disabled] {
+            cursor: not-allowed;
+            opacity: .5;
+            background: rgba( 0, 0, 0, .2 );
+
+            &:hover {
+                background: rgba( 0, 0, 0, .2 );
+            }
+        }
+
+        svg {
+            fill: rgba( 255, 255, 255, 0.7 );
+            width: 15px;
+            height: 15px;
+
+            position: relative;
+
+        }
+
+
+        &--previous {
+            left: 0;
+
+            svg {
+                left: -3px;
+                top: 2px;
+                transform: rotate(-180deg);
+            }
+        }
+
+        &--next {
+            right: 0;
+            transform: translateY(-50%);
+            z-index: $level-five;
+
+            svg {
+                top: 2px;
+            }
+        }
+    }
+}
+
+@media ( max-width: $slider-max-width + 150px ) {
+    .slider {
+
+        &::before {
+            display: none;
+        }
+    }
+}
+
+@media ( max-width: $slider-full-width ) {
+    .slider {
+
+        &__wrapper {
+            margin: 0 10px;
+        }
     }
 }

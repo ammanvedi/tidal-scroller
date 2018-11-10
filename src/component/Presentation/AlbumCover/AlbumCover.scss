@@ -1,0 +1,81 @@
+@import '../../../styles/Font.scss';
+@import '../../../styles/Variables.scss';
+@import '../../../styles/Mixins.scss';
+
+.album_cover {
+    position: relative;
+
+    &::after {
+        content: '';
+        @include absCover();
+        z-index: $level-one;
+        background-image: $cover-gradient;
+    }
+
+    &__meta {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 25px;
+        z-index: $level-two;
+
+        svg {
+            width: 14px;
+            height: 14px;
+            vertical-align: middle;
+        }
+    }
+
+    &__meta_top {
+        margin-bottom: 14px;
+    }
+
+    &__track_count {
+        @include font-bold;
+        font-weight: bold;
+        font-size: 11px;
+        color: rgba(253, 253, 253, .9);
+        background-color: rgba(68, 189, 50, .8);
+        padding: 2px 5px;
+        border-radius: 2px;
+        overflow: hidden;
+        margin-left: 4px;
+    }
+
+    &__timestamp {
+        @include font-bold;
+        font-size: 11px;
+        color: rgba( 255, 255, 255, .9 );
+        padding: 2px 5px 3px 5px;
+        background-color: rgba(53, 59, 72, .9);
+        border-radius: 2px;
+        overflow: hidden;
+        color: #fff;
+        margin-left: 5px;
+        font-size: 10px;
+        line-height: 5px;
+        vertical-align: middle;
+    }
+
+    &__artists {
+        color: $text-white-light;
+        list-style-type: none;
+        padding: 0;
+        margin-top: 6px;
+        font-size: 15px;
+        display: block;
+        opacity: .6;
+        white-space: normal;
+        line-height: 20px;
+    }
+
+    &__title {
+        color: $text-white;
+        white-space: normal;
+        line-height: 30px;
+        font-size: 25px;
+    }
+
+
+}

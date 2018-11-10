@@ -1,0 +1,15 @@
+@mixin dotPseudoEl() {
+    content: '';
+    display: inline-block;
+    margin: 0 5px;
+    background-color: #fff;
+    opacity: .32;
+}
+
+@mixin absCover() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+}

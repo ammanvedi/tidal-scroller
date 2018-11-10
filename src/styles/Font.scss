@@ -1,0 +1,13 @@
+@mixin font {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+@mixin font-normal {
+    @include font;
+    font-weight: normal;
+}
+
+@mixin font-bold {
+    @include font;
+    font-weight: bold;
+}

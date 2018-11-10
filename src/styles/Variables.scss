@@ -1,0 +1,22 @@
+$text-white-light: rgba( 253, 253, 253, .78 );
+$text-white: rgba( 253, 253, 253, .93 );
+
+//$slider-background: #e58e26;
+$slider-background: #dcdde1;
+
+//$item-color: #40407a;
+//$item-color: #535c68;
+//$item-color: #786fa6;
+$item-color: #303952;
+
+$cover-gradient: linear-gradient(to top, $item-color -1%, rgba(26, 26, 26, 0) 83%);
+
+$level-one: 10;
+$level-two: 20;
+$level-three: 30;
+$level-four: 40;
+$level-five: 50;
+
+$slider-button-size: 40px;
+$slider-max-width: 1280px;
+$slider-full-width: 1280px + ( $slider-button-size * 2 );
