@@ -34,8 +34,9 @@ describe( 'Album Cover - Presentation', () => {
     } )
 
     it( 'Renders the component correctly', () => {
-        expect( component.exists( '.album-cover' ) ).toBe( true );
-        expect( component.find( '.album-cover__artists' ).first().children().length ).toBe( 2 );
+        console.log( component.debug() );
+        expect( component.find( '.album_cover' ).length ).toBe( 1 );
+        expect( component.find( '.album_cover__artists' ).first().children().length ).toBe( 2 );
     } );
 
     it( 'Fires mouse enter callback', () => {
