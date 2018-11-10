@@ -30,7 +30,8 @@
       "global": true,
       "setTimeout": true,
       "clearTimeout": true,
-      "window": true
+      "window": true,
+      "getComputedStyle": true
     },
     "settings": {
         "react": {
