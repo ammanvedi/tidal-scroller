@@ -8,12 +8,13 @@ import { createSliderComponent } from './SliderComponent';
 
 type ImageSize = 80 | 160 | 320 | 640 | 1280;
 
-const getTidalImageUrl = ( imageHash: string, size: ImageSize = 320 ): string => {
+const getTidalImageUrl = ( imageHash: string, size: ImageSize = 640 ): string => {
     const uuidPath: string = imageHash.split( '-' ).join( '/' );
     return `https://resources.tidal.com/images/${ uuidPath }/${ size.toString() }x${ size.toString() }.jpg`
 }
 
 const getAlbumModel = ( tidalInfo: TidalFavoriteItem ): AlbumModel => ( {
+    lastUpdated: tidalInfo.created,
     id: tidalInfo.album.id.toString(),
     title: tidalInfo.album.title,
     imageUrl: getTidalImageUrl( tidalInfo.album.cover ),
@@ -43,9 +44,11 @@ const getAlbumList = ( tidalData: TidalFavoritesData ): AlbumList => {
     }
 
     const albumMap = tidalData.items.reduce( ( mapping: IntermediateAlbumMapping, wrapper: TidalFavoriteWrapper ): IntermediateAlbumMapping => {
-        const tidalItem: TidalFavoriteItem = wrapper.item;
+        const tidalItem: TidalFavoriteItem = { ...wrapper.item, created: wrapper.created } ;
 
         if ( !mapping.has( tidalItem.album.id ) ) {
+            // we are iterating in descending order, so the first time we encounter an album
+            // is the last time it was updated
             mapping.set( tidalItem.album.id, getAlbumModel( tidalItem ) );
         }
 
