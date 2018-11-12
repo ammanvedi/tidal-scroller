@@ -26,7 +26,9 @@ export type SongModel = {
     id: string,
     title: string,
     artists: Array<ArtistModel>,
-    url: string
+    url: string,
+    duration: number,
+    explicit: boolean
 }
 
 export type AlbumModel = ItemModel & {
