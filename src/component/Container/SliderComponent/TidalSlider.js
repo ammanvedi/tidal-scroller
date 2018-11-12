@@ -13,21 +13,32 @@ const getTidalImageUrl = ( imageHash: string, size: ImageSize = 640 ): string =>
     return `https://resources.tidal.com/images/${ uuidPath }/${ size.toString() }x${ size.toString() }.jpg`
 }
 
+const getTidalLink = ( id: number ): string => {
+    return `https://tidal.com/track/${ id }`
+}
+
+const sanitizeTidalDate = ( dateString: string ): string => {
+    // get around parsing diffs in safari chrome and ffx
+    return dateString.replace( /-/g, '/' ).replace( 'T', ' ' ).replace( /\.[0-9]+\+/, ' +' )
+}
+
 const getAlbumModel = ( tidalInfo: TidalFavoriteItem ): AlbumModel => ( {
-    lastUpdated: tidalInfo.created,
+    lastUpdated: sanitizeTidalDate( tidalInfo.created ),
     id: tidalInfo.album.id.toString(),
     title: tidalInfo.album.title,
     imageUrl: getTidalImageUrl( tidalInfo.album.cover ),
     songs: [],
     artists: [ getArtistModel( tidalInfo.artist ) ],
-    url: tidalInfo.id.toString()
+    url: getTidalLink( tidalInfo.id )
 } )
 
 const getSongModel = ( tidalInfo: TidalFavoriteItem ): SongModel => ( {
     id: tidalInfo.id.toString(),
     title: tidalInfo.title,
     artists: tidalInfo.artists.map( artist => getArtistModel( artist ) ),
-    url: tidalInfo.id.toString()
+    url: getTidalLink( tidalInfo.id ),
+    explicit: tidalInfo.explicit,
+    duration: tidalInfo.duration
 } );
 
 const getArtistModel = ( artist: TidalArtist ): ArtistModel => ( {
