@@ -90,6 +90,10 @@
 
     .song {
 
+        &:first-child {
+            margin-top: 0px;
+        }
+
         &__meta_text {
             max-width: 140px;
         }
