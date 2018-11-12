@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { AlbumItem } from './AlbumItem';
 import { AlbumCover } from '../../Presentation/AlbumCover/AlbumCover';
-import { AlbumSongList } from '../../Presentation/AlbumSongList/AlbumSongList';
 
 describe( 'Album Item - Container', () => {
 
@@ -33,7 +32,6 @@ describe( 'Album Item - Container', () => {
 
     it( 'Renders component correctly', () => {
         expect( component.find( AlbumCover ).length ).toBe( 1 );
-        expect( component.find( AlbumSongList ).length ).toBe( 1 );
     } );
 
 } );
