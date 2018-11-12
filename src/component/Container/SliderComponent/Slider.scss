@@ -7,7 +7,7 @@
     overflow: hidden;
     position: relative;
     @include font-bold;
-    background-color: rgba( $slider-background, .8 );
+    background-color: rgba( $slider-background, .6 );
 
     &::before {
         content: '';
