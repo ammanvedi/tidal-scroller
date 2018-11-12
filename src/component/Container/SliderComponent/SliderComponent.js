@@ -119,11 +119,11 @@ export const createSliderComponent = function(
             return (
                 <div className={ styles.slider } >
                     <div className={ styles.slider__wrapper }>
-                        <ul className={ styles.slider__list }
+                        <div className={ styles.slider__list }
                             style={{ transform: `translateX( -${ this.state.sliderPosition }px )` }}
                             ref={ ( element: HTMLElement | null ) => { this.container = element  } } >
                             { ( this.props.itemList || [] ).map( ( item: ItemModel, ix: number ) => <ItemComponent setRef={ ( element: HTMLElement | null ) => this.registerElement( ix, element ) } key={item.id} model={item} /> ) }
-                        </ul>
+                        </div>
                         <Button className={ `${ styles.slider__button } ${ styles[ 'slider__button--next' ] }` }
                                 disabled={ this.state.currentPageIndex === ( this.pages.length - 1 ) }
                                 text="Next" callback={ () => this.onNextClicked() } >
