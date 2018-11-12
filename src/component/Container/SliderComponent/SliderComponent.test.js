@@ -38,11 +38,11 @@ describe( 'Slider Component - Container', () => {
     } );
 
     it( 'Renders the correct number of items', () => {
-        expect( container.find( 'ul' ).children().length ).toBe( 2 );
+        expect( container.find( '.slider__list' ).children().length ).toBe( 2 );
     } );
 
     it( 'Renders the correct item class', () => {
-        expect( container.find( 'li' ).length ).toBe( 2 );
+        expect( container.find( Item ).length ).toBe( 2 );
     } );
 
     it( 'Calls the data fetch function', () => {

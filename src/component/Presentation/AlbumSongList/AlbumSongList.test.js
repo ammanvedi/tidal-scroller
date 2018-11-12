@@ -35,7 +35,6 @@ describe( 'Album Song List - Presentation', () => {
         expect( component.exists( '.album-song-list' ) )
         expect( component.find( '.album-song-list' ).prop( 'className' ) ).toBe( 'album-song-list myClass' );
         expect( component.find( '.album-song-list' ).children().length ).toBe( 2 );
-        expect( component.find( '.album-song-list__artists' ).first().children().length ).toBe( 2 );
     } );
 
 } )
