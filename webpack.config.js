@@ -5,8 +5,7 @@ module.exports = {
     entry: './src/App.js',
     output: {
         path: __dirname + '/dist',
-        filename: 'app.js',
-        libraryTarget: 'umd'
+        filename: 'app.js'
     },
     module: {
       rules: [
