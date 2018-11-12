@@ -2,6 +2,7 @@
 
 .album-item {
     display: inline-block;
+    vertical-align: middle;
     width: $album-cover-size;
     height: $album-cover-size;
     overflow: hidden;
