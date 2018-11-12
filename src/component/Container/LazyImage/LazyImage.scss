@@ -1,3 +1,31 @@
+@import '../../../styles/Variables.scss';
+
 .lazy_image {
     position: relative;
+    min-height: $album-cover-size;
+}
+
+@media( max-width: $album-small-breakpoint ) {
+
+    .lazy_image {
+        min-height: $album-cover-size-small;
+    }
+}
+
+
+@media( max-width: $scroller-grid-breakpoint ) {
+
+    .lazy_image {
+        margin-bottom: -100px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient( to top, $mobile-item-color 15%, rgba( $mobile-item-color, 0 ) 55% );
+        }
+    }
 }

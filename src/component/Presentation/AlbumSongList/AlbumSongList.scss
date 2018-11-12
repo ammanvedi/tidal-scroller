@@ -1,3 +1,24 @@
+@import '../../../styles/Variables.scss';
+
 .album-song-list {
-    display: none;
+    flex: 0 1;
+    transition: .3s ease-in-out flex, .3s ease-in-out opacity;
+    opacity: 0;
+    overflow-x: hidden;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    &--show {
+        opacity: 1;
+        flex: 1 0;
+    }
+}
+
+@media( max-width: $album-show-songs-breakpoint ) {
+
+    .album-song-list {
+        opacity: 1;
+        flex: 1 0;
+    }
 }

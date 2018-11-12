@@ -117,3 +117,46 @@
         }
     }
 }
+
+@media( max-width: $scroller-list-breakpoint ) {
+
+    .slider {
+
+        &__button {
+            display: none;
+        }
+
+        &__list {
+            transform: none !important;
+            overflow: scroll;
+            padding-left: 3rem;
+        }
+
+        &__wrapper {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+@media( max-width: $album-small-breakpoint ) {
+
+    .slider {
+
+        &__list {
+            padding: 0;
+        }
+    }
+}
+
+@media( max-width: $scroller-grid-breakpoint ) {
+
+    .slider {
+        padding-top: 5px;
+        margin-top: 0;
+
+        &__list {
+            white-space: normal;
+        }
+    }
+}

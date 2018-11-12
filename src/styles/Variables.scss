@@ -9,6 +9,8 @@ $slider-background: #dcdde1;
 //$item-color: #786fa6;
 $item-color: #303952;
 
+$mobile-item-color: #222;
+
 $cover-gradient: linear-gradient(to top, $item-color -1%, rgba(26, 26, 26, 0) 83%);
 
 $level-one: 10;
@@ -20,3 +22,13 @@ $level-five: 50;
 $slider-button-size: 40px;
 $slider-max-width: 1280px;
 $slider-full-width: 1280px + ( $slider-button-size * 2 );
+
+$album-cover-size: 400px;
+$album-cover-size-small: 285px;
+$album-cover-padding: 25px;
+$album-cover-padding-small: 15px;
+
+$scroller-list-breakpoint: 1000px;
+$scroller-grid-breakpoint: 340px;
+$album-small-breakpoint: 600px;
+$album-show-songs-breakpoint: 1000px;

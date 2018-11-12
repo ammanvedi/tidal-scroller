@@ -2,14 +2,34 @@
 @import '../../../styles/Variables.scss';
 @import '../../../styles/Mixins.scss';
 
+@mixin dark-gradient {
+    &::after {
+        opacity: 0;
+    }
+
+    &::before {
+        opacity: 1;
+    }
+}
+
 .album_cover {
     position: relative;
 
-    &::after {
+    &::after,
+    &::before {
+        transition: .3s ease-in-out opacity;
         content: '';
         @include absCover();
         z-index: $level-one;
+    }
+
+    &::after {
         background-image: $cover-gradient;
+    }
+
+    &::before {
+        opacity: 0;
+        background-color: rgba( #000, .7 );
     }
 
     &__meta {
@@ -17,14 +37,29 @@
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 25px;
+        top: 0;
+        padding: $album-cover-padding;
         z-index: $level-two;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
 
         svg {
             width: 14px;
             height: 14px;
             vertical-align: middle;
         }
+
+        &--show-list {
+
+            .album_cover__title {
+                opacity: .8;
+            }
+        }
+    }
+
+    &__meta-wrap {
+        flex: 0 0 auto;
     }
 
     &__meta_top {
@@ -75,7 +110,47 @@
         white-space: normal;
         line-height: 30px;
         font-size: 25px;
+        transition: .3s ease-in-out opacity;
     }
 
+    &--dark-gradient {
+        @include dark-gradient;
+    }
+}
 
+@media( max-width: $album-show-songs-breakpoint ) {
+
+    .album_cover {
+        @include dark-gradient;
+    }
+}
+
+@media( max-width: $album-small-breakpoint ) {
+
+    .album_cover {
+
+        &__title {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        &__meta {
+            padding: $album-cover-padding-small;
+        }
+    }
+}
+
+@media( max-width: $scroller-grid-breakpoint ) {
+
+    .album_cover {
+
+        &::before {
+            display: none;
+        }
+
+        &__meta {
+            display: block;
+            position: relative;
+        }
+    }
 }
