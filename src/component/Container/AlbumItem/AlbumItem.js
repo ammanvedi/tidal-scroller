@@ -3,7 +3,6 @@
 import React from 'react';
 import type { AlbumModel } from '../../Type';
 import { AlbumCover } from '../../Presentation/AlbumCover/AlbumCover';
-import { AlbumSongList } from '../../Presentation/AlbumSongList/AlbumSongList';
 import styles from './AlbumItem.scss';
 
 export type AlbumComponentProps = {
@@ -38,10 +37,10 @@ export class AlbumItem extends React.Component<AlbumComponentProps, AlbumCompone
         return (
             <div className={ styles[ 'album-item' ] } ref={ this.props.setRef } >
                 <AlbumCover className=""
+                            listVisible={ this.state.listVisible }
                             album={ this.props.model }
                             onMouseEnter={ () => this.mouseEnteredAlbumCover() }
                             onMouseLeave={ () => this.mouseLeftAlbumCover() } />
-                <AlbumSongList className={ this.state.listVisible ? 'album-song-list--visible': 'album-song-list--hidden' } songs={ this.props.model.songs } />
             </div>
         )
     }
