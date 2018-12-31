@@ -8,10 +8,12 @@ import type createReduxSagaMiddleware from 'redux-saga';
 
 const sagaMiddleware: createReduxSagaMiddleware = createSagaMiddleware();
 
+export const tidalState = {
+    tidalData: tidalDataReducer
+}
+
 export default createStore(
-    combineReducers( {
-        tidalData: tidalDataReducer
-    } ),
+    combineReducers( tidalState ),
     applyMiddleware( sagaMiddleware )
 );
 

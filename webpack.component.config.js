@@ -1,6 +1,6 @@
 module.exports = {
     devtool: 'source-map',
-    entry: './src/component/Container/SliderComponent/TidalSlider.js',
+    entry: './src/Component.js',
     output: {
         path: __dirname + '/dist',
         filename: 'tidal-slider.js',
