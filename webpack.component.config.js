@@ -5,6 +5,10 @@ module.exports = {
         path: __dirname + '/dist',
         filename: 'tidal-slider.js'
     },
+    optimization: {
+		// We no not want to minimize our code.
+		minimize: false
+	},
     module: {
       rules: [
         {
