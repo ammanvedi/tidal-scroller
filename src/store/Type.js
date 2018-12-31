@@ -32,12 +32,7 @@ export type TidalFavoritesData = {
     offset?: number,
     totalNumberOfItems?: number,
     lastUpdated?: number,
-    items?: Array<TidalFavoriteWrapper>
-}
-
-export type TidalFavoriteWrapper = {
-    created: string,
-    item: TidalFavoriteItem
+    items?: Array<TidalFavoriteItem>
 }
 
 export type TidalArtist = {
@@ -55,7 +50,7 @@ export type TidalAlbum = {
 export type TidalArtists = Array<TidalArtist>;
 
 export type TidalFavoriteItem = {
-    created: string,
+    created?: string,
     id: number,
     title: string,
     duration: number,

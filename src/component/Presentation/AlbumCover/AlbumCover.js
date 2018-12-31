@@ -37,9 +37,12 @@ export const AlbumCover = ( props: AlbumCoverProps ) => {
                         <span className={ styles.album_cover__track_count } >
                             { props.album.songs.length === 1 ? '1 Track' : `${ props.album.songs.length } Tracks` }
                         </span>
-                        <span className={ styles.album_cover__timestamp }>
-                            { timeAgo( now, new Date( props.album.lastUpdated ).getTime() ) }
-                        </span>
+                        { props.album.lastUpdated ? (
+                            <span className={ styles.album_cover__timestamp }>
+                                { timeAgo( now, new Date( props.album.lastUpdated ).getTime() ) }
+                            </span>
+                            ): null }
+
                     </div>
                     <span className={ styles.album_cover__title } >{ props.album.title }</span>
                     <ul className={ styles.album_cover__artists } >

@@ -1,7 +1,7 @@
 // @flow
 
 import { tidalDataFetch } from '../../../store/Action/TidalDataAction';
-import type { TidalFavoritesData, TidalFavoriteWrapper, TidalFavoriteItem, TidalArtist } from '../../../store/Type';
+import type { TidalFavoritesData, TidalFavoriteItem, TidalArtist } from '../../../store/Type';
 import type { AlbumList, AlbumModel, SongModel, ArtistModel } from '../../Type';
 import { AlbumItem } from '../AlbumItem/AlbumItem';
 import { createSliderComponent } from './SliderComponent';
@@ -17,13 +17,7 @@ const getTidalLink = ( id: number ): string => {
     return `https://tidal.com/track/${ id }`
 }
 
-const sanitizeTidalDate = ( dateString: string ): string => {
-    // get around parsing diffs in safari chrome and ffx
-    return dateString.replace( /-/g, '/' ).replace( 'T', ' ' ).replace( /\.[0-9]+\+/, ' +' )
-}
-
 const getAlbumModel = ( tidalInfo: TidalFavoriteItem ): AlbumModel => ( {
-    lastUpdated: sanitizeTidalDate( tidalInfo.created ),
     id: tidalInfo.album.id.toString(),
     title: tidalInfo.album.title,
     imageUrl: getTidalImageUrl( tidalInfo.album.cover ),
@@ -54,8 +48,8 @@ const getAlbumList = ( tidalData: TidalFavoritesData ): AlbumList => {
         return [];
     }
 
-    const albumMap = tidalData.items.reduce( ( mapping: IntermediateAlbumMapping, wrapper: TidalFavoriteWrapper ): IntermediateAlbumMapping => {
-        const tidalItem: TidalFavoriteItem = { ...wrapper.item, created: wrapper.created } ;
+    const albumMap = tidalData.items.reduce( ( mapping: IntermediateAlbumMapping, wrapper: TidalFavoriteItem ): IntermediateAlbumMapping => {
+        const tidalItem: TidalFavoriteItem = { ...wrapper, created: wrapper.created } ;
 
         if ( !mapping.has( tidalItem.album.id ) ) {
             // we are iterating in descending order, so the first time we encounter an album

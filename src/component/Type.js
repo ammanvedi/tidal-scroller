@@ -32,7 +32,7 @@ export type SongModel = {
 }
 
 export type AlbumModel = ItemModel & {
-    lastUpdated: string,
+    lastUpdated?: string,
     songs: Array<SongModel>,
     artists: Array<ArtistModel>,
     url: string

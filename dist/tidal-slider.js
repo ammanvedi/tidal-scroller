@@ -2380,9 +2380,9 @@ var AlbumCover_AlbumCover_AlbumCover = function AlbumCover(props) {
     svg: heart_default.a
   }), react_default.a.createElement("span", {
     className: AlbumCover_default.a.album_cover__track_count
-  }, props.album.songs.length === 1 ? '1 Track' : "".concat(props.album.songs.length, " Tracks")), react_default.a.createElement("span", {
+  }, props.album.songs.length === 1 ? '1 Track' : "".concat(props.album.songs.length, " Tracks")), props.album.lastUpdated ? react_default.a.createElement("span", {
     className: AlbumCover_default.a.album_cover__timestamp
-  }, timeAgo(now, new Date(props.album.lastUpdated).getTime()))), react_default.a.createElement("span", {
+  }, timeAgo(now, new Date(props.album.lastUpdated).getTime())) : null), react_default.a.createElement("span", {
     className: AlbumCover_default.a.album_cover__title
   }, props.album.title), react_default.a.createElement("ul", {
     className: AlbumCover_default.a.album_cover__artists
@@ -4284,14 +4284,8 @@ var getTidalLink = function getTidalLink(id) {
   return "https://tidal.com/track/".concat(id);
 };
 
-var sanitizeTidalDate = function sanitizeTidalDate(dateString) {
-  // get around parsing diffs in safari chrome and ffx
-  return dateString.replace(/-/g, '/').replace('T', ' ').replace(/\.[0-9]+\+/, ' +');
-};
-
 var getAlbumModel = function getAlbumModel(tidalInfo) {
   return {
-    lastUpdated: sanitizeTidalDate(tidalInfo.created),
     id: tidalInfo.album.id.toString(),
     title: tidalInfo.album.title,
     imageUrl: getTidalImageUrl(tidalInfo.album.cover),
@@ -4327,7 +4321,7 @@ var getAlbumList = function getAlbumList(tidalData) {
   }
 
   var albumMap = tidalData.items.reduce(function (mapping, wrapper) {
-    var tidalItem = TidalSlider_objectSpread({}, wrapper.item, {
+    var tidalItem = TidalSlider_objectSpread({}, wrapper, {
       created: wrapper.created
     });
 
