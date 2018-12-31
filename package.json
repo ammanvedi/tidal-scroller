@@ -2,7 +2,7 @@
   "name": "react-starter",
   "version": "1.1.0",
   "description": "This is a starter module that provides the following;  - ES6   - React  - CSS Modules  - Flow for typing  - Redux  - webpack",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "start-prod": "webpack-dev-server --open --mode production",
