@@ -3,7 +3,9 @@ module.exports = {
     entry: './src/component/Container/SliderComponent/TidalSlider.js',
     output: {
         path: __dirname + '/dist',
-        filename: 'tidal-slider.js'
+        filename: 'tidal-slider.js',
+        libraryTarget: 'umd',
+        library: 'TidalSlider'
     },
     optimization: {
 		// We no not want to minimize our code.
