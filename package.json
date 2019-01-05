@@ -1,6 +1,6 @@
 {
   "name": "tidal-scroller",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "This is a starter module that provides the following;  - ES6   - React  - CSS Modules  - Flow for typing  - Redux  - webpack",
   "main": "dist/tidal-slider.js",
   "scripts": {
